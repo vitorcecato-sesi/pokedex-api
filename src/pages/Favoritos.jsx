@@ -9,6 +9,7 @@
 // Componente
     import Header from "../components/Header"
     import Footer from "../components/Footer"
+    import TrocaDecor from "../components/botaoTema"
 //.
 
 function Favoritos() {
@@ -19,6 +20,7 @@ function Favoritos() {
                 <section className="mainFavoritos">
                     <h1>Favoritos</h1>
 
+                    
                 </section>
                 <Footer />
             </section>
