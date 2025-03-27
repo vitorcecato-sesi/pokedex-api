@@ -18,7 +18,7 @@ function Favoritos() {
 
     useEffect(() => {
         const timer = setInterval(() => {
-            setInfoFavorito(JSON.parse(localStorage.getItem("Favoritos")) || [])
+            setInfoFavorito(JSON.parse(localStorage.getItem("Favoritos")))
         }, 100)
 
         return() => {
@@ -41,11 +41,11 @@ function Favoritos() {
                 <section className="mainFavoritos">
                     <h1>Favoritos</h1>
                     <section className="infoFavoritos">
-                        {infoFavorito && infoFavorito > 0 && infoFavorito.map((pokemon, index) => (
+                        {infoFavorito && infoFavorito.length > 0 && infoFavorito.map((pokemon, index) => (
                             <section className="cartaFavoritos">
                                 <img src={pokemon.imagem} alt={`Imagem do ${pokemon.nome} `} />
                                 <h2>{pokemon.nome}</h2>
-                                <button onClick={removerFavorito(index)}>Desfavoritar</button>
+                                <button onClick={() => removerFavorito(index)}>Desfavoritar</button>
                             </section>
                         ))}
                     </section>
