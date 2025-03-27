@@ -10,13 +10,17 @@
     import Header from "../components/Header"
     import Footer from "../components/Footer"
     import TrocaDecor from "../components/botaoTema"
+    import Navbar from "../components/NavBar"
 //.
 
 function Favoritos() {
     return(
         <>
             <section className="bodyFavoritos">
-                <Header />
+                <section>
+                    <Header />
+                    <Navbar favoritos="ativo" />
+                </section>
                 <section className="mainFavoritos">
                     <h1>Favoritos</h1>
 
