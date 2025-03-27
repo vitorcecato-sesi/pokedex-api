@@ -6,8 +6,6 @@ import logoG3 from "../assets/logoG3.png"
 import PokemonLogo from "../assets/Pokemon.png"
 import ImgGitHub from "../assets/github.png"
 
-
-
 function Header () {
     return (
         <>
@@ -22,7 +20,6 @@ function Header () {
         </header>
         </>
     )
-
 }
 
 export default Header
