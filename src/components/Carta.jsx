@@ -1,34 +1,46 @@
 import { useState, useEffect } from 'react';
 
 function Carta() {
-  const [informacoes] = useState(JSON.parse(localStorage.getItem("Informações")) || {})
+  const [informacoes, setInformacoes] = useState(JSON.parse(localStorage.getItem("Informacoes")) || "")
   const [favoritar, setFavoritar] = useState(false);
+
+  const verificarFavorito = () => {
+    const favoritos = JSON.parse(localStorage.getItem("Favoritos")) || {};
+    setFavoritar(!!favoritos[informacoes.id]);
+  };
 
   useEffect(() => {
     if (informacoes.id) {
-      setFavoritar(JSON.parse(localStorage.getItem("Favoritos"))?.includes(informacoes.id) || false);
+      verificarFavorito();
     }
   }, [informacoes.id]);
 
-  const toggleFavoritar = () => {
-    const favoritos = JSON.parse(localStorage.getItem("Favoritos")) || [];
-    if (!favoritar) {
-      favoritos.push(informacoes.id);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+        setInformacoes(JSON.parse(localStorage.getItem("Informacoes") || ""));
+    }, 100);
+    return () => clearTimeout(timer);
+  })
+
+  const guardarFavorito = () => {
+    const favoritos = JSON.parse(localStorage.getItem("Favoritos")) || {};
+    if (!favoritos[informacoes.id]) {
+      favoritos[informacoes.id] = true;
+      localStorage.setItem("Favoritos", JSON.stringify(favoritos));
+      setFavoritar(true);
     }
-    localStorage.setItem("Favoritos", JSON.stringify(favoritos));
-    setFavoritar(true);
   };
   
   return (
     <>
-      {informacoes.name && (
+      {informacoes.nome && (
         <>
           <h1>{informacoes.nome}</h1>
-          <img src={informacoes.image} alt={informacoes.name} />
+          <img src={informacoes.imagem} alt={informacoes.nome} />
           <p>Tipo: {informacoes.tipo}</p>
-          <p>Habilidades: {informacoes.abilities}</p>
-          <p>Estatísticas: {informacoes.stats}</p>
-          <button onClick={toggleFavoritar}>Favoritar</button>
+          <p>Habilidades: {informacoes.habilidades.join(", ")}</p>
+          <p>Estatísticas: {informacoes.estatistica.join(", ")}</p>
+          <button onClick={guardarFavorito}> Favoritar </button>
         </>
       )}
     </>

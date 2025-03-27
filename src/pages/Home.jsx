@@ -50,7 +50,7 @@ function Home() {
         <input className="pesquisar" value={busca} onChange={mudancaInput} placeholder="Insira ID ou nome de um pokémon"/>
       </section>
 
-      <Carta informacoes={informacoes} />
+      <Carta />
     </>
   )
 }
