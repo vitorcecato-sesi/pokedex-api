@@ -5,6 +5,10 @@
 function Home() {
     return(
         <>
+        <Header/>
+        <Navbar home="ativo" />
+        <Footer/>
+
         </>
     )
 }
