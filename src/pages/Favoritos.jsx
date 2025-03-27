@@ -1,5 +1,5 @@
 // Hooks
-    import { useState } from "react"
+    import { useEffect, useState } from "react"
 //.
 
 // Style
@@ -14,7 +14,17 @@
 //.
 
 function Favoritos() {
-    const [infoFavorito] = useState(JSON.parse(localStorage.getItem("Favoritos")) || []);
+    const [infoFavorito, setInfoFavorito] = useState(JSON.parse(localStorage.getItem("Favoritos")) || []);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setInfoFavorito(JSON.parse(localStorage.getItem("Favoritos")) || [])
+        }, 100)
+
+        return() => {
+            clearInterval(timer) // Remove o timer ao desmontar
+        }
+    }, [])
 
     const removerFavorito = (numeroArray) => {
         const novoFavoritos = infoFavorito.filter((conteudo, index) => index !== numeroArray)
