@@ -8,18 +8,26 @@
 
 // Componente
     import Header from "../components/Header"
-    import NavBar from "../components/NavBar"
-    // import Footer from "../components/Footer"
+    import Footer from "../components/Footer"
+    import TrocaDecor from "../components/botaoTema"
+    import Navbar from "../components/NavBar"
 //.
 
 function Favoritos() {
     return(
         <>
-            <Header />
-            <NavBar/>
-            <section className="mainFavoritos">
-                <h1>Favoritos</h1>
+            <section className="bodyFavoritos">
+                <section>
+                    <Header />
+                    <Navbar favoritos="ativo" />
+                </section>
+                <section className="mainFavoritos">
+                    <h1>Favoritos</h1>
+                    <TrocaDecor/>
 
+                    
+                </section>
+                <Footer />
             </section>
         </>
     )

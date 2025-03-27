@@ -1,3 +1,10 @@
+.bodyFavoritos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
 .mainFavoritos {
     display: flex;
     flex-direction: column;
