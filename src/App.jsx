@@ -11,10 +11,12 @@
   import Favoritos from './pages/favoritos'
 //.
 
+
 function App() {
 
   return (
     <>
+  
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}/>

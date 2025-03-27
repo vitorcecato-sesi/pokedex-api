@@ -1,0 +1,19 @@
+.bola{
+    border: 20em;
+    background-color:  white;
+}
+.poke{
+    border: 20em;
+    background-color: rgb(224, 46, 46);
+    color: white;   
+}
+.botao{
+    padding: 1em;
+    width: 10em;;
+    background-color: black;
+    color: aliceblue;
+    border-radius: 1em;
+    border: solid white 1px;
+   font-family: 'Comic Sans MS', cursive;
+
+}
