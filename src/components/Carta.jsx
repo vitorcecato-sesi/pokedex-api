@@ -1,33 +1,36 @@
-
-
 import { useState, useEffect } from 'react';
 
 function Carta() {
-  const [pokemon, setPokemon] = useState(...);
-  const [favoritar, setIsFavorite] = useState(false);
+  const [informacoes] = useState(JSON.parse(localStorage.getItem("Informações")) || {})
+  const [favoritar, setFavoritar] = useState(false);
 
   useEffect(() => {
-    const favorites = getFavorites();
-    setIsFavorite(favorites.includes(pokemon.id));
-  }, [pokemon.id]);
-
-  const handleFavorite = () => {
-    if (favoritar) {
-      saveToFavorites(pokemon.id, false);
-    } else {
-      saveToFavorites(pokemon.id, true);
+    if (informacoes.id) {
+      setFavoritar(JSON.parse(localStorage.getItem("Favoritos"))?.includes(informacoes.id) || false);
     }
-    setIsFavorite(!favoritar);
-  };
+  }, [informacoes.id]);
 
+  const toggleFavoritar = () => {
+    const favoritos = JSON.parse(localStorage.getItem("Favoritos")) || [];
+    if (!favoritar) {
+      favoritos.push(informacoes.id);
+    }
+    localStorage.setItem("Favoritos", JSON.stringify(favoritos));
+    setFavoritar(true);
+  };
+  
   return (
     <>
-      <h1>{pokemon.name}</h1>
-      <img src={pokemon.image} alt={pokemon.name} />
-      <p>Tipo: {pokemon.type}</p>
-      <p>Habilidades: {pokemon.abilities}</p>
-      <p>Estatísticas: {pokemon.stats}</p>
-      <button onClick={handleFavorite}> {favoritar ? 'Remover dos favoritos' : 'Adicionar aos favoritos'} </button>
+      {informacoes.name && (
+        <>
+          <h1>{informacoes.nome}</h1>
+          <img src={informacoes.image} alt={informacoes.name} />
+          <p>Tipo: {informacoes.tipo}</p>
+          <p>Habilidades: {informacoes.abilities}</p>
+          <p>Estatísticas: {informacoes.stats}</p>
+          <button onClick={toggleFavoritar}>Favoritar</button>
+        </>
+      )}
     </>
   );
 }

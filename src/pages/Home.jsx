@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
 import "./styles/Home.css"
 
+import Carta from "../components/Carta"
+
 function Home() {
 
   const [pokemons, setPokemons] = useState(JSON.parse(localStorage.getItem("Dados API")) || {})
   const [busca, setBusca] = useState("")
-  const [informacoes, setInformacoes] = useState(JSON.parse(localStorage.getItem("Informações")) || "")
+  const [informacoes, setInformacoes] = useState(JSON.parse(localStorage.getItem("Informacoes")) || "")
 
   useEffect(() => {
     async function buscarPokemons() {
@@ -13,6 +15,7 @@ function Home() {
         const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${busca.toLowerCase()}`)
         const dados = await resposta.json()
         setPokemons(dados)
+        guardarInformacoes(dados)
       } catch (error) {
         console.error(error)
       }
@@ -29,7 +32,7 @@ function Home() {
       estatistica: pokemon.stats.map(estatistica => estatistica.base_stat)
     }
     setInformacoes(informacoes)
-    localStorage.setItem("Informações", JSON.stringify(informacoes))
+    localStorage.setItem("Informacoes", JSON.stringify(informacoes))
   }
 
   useEffect(() => {
@@ -46,6 +49,8 @@ function Home() {
         <i className="fa-solid fa-magnifying-glass"></i>
         <input className="pesquisar" value={busca} onChange={mudancaInput} placeholder="Insira ID ou nome de um pokémon"/>
       </section>
+
+      <Carta informacoes={informacoes} />
     </>
   )
 }
