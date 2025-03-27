@@ -8,16 +8,19 @@
 
 // Componente
     import Header from "../components/Header"
-    // import Footer from "../components/Footer"
+    import Footer from "../components/Footer"
 //.
 
 function Favoritos() {
     return(
         <>
-            <Header />
-            <section className="mainFavoritos">
-                <h1>Favoritos</h1>
+            <section className="bodyFavoritos">
+                <Header />
+                <section className="mainFavoritos">
+                    <h1>Favoritos</h1>
 
+                </section>
+                <Footer />
             </section>
         </>
     )
