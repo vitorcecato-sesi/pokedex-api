@@ -1,33 +1,39 @@
-
+import "./styles/Carta.css"
 
 import { useState, useEffect } from 'react';
 
 function Carta() {
-  const [pokemon, setPokemon] = useState(...);
-  const [favoritar, setIsFavorite] = useState(false);
-
+  const [informacoes, setInformacoes] = useState(JSON.parse(localStorage.getItem("Informacoes")) || "")
+  const [favoritar, setFavoritar] = useState(false);
+  
   useEffect(() => {
-    const favorites = getFavorites();
-    setIsFavorite(favorites.includes(pokemon.id));
-  }, [pokemon.id]);
+    const timer = setTimeout(() => {
+        setInformacoes(JSON.parse(localStorage.getItem("Informacoes") || ""));
+    }, 100);
+    return () => clearTimeout(timer);
+  })
 
-  const handleFavorite = () => {
-    if (favoritar) {
-      saveToFavorites(pokemon.id, false);
-    } else {
-      saveToFavorites(pokemon.id, true);
-    }
-    setIsFavorite(!favoritar);
+  const guardarFavorito = () => {
+      localStorage.setItem("Favoritos", JSON.stringify(informacoes))
+      setFavoritar(false);
   };
-
+  
   return (
     <>
-      <h1>{pokemon.name}</h1>
-      <img src={pokemon.image} alt={pokemon.name} />
-      <p>Tipo: {pokemon.type}</p>
-      <p>Habilidades: {pokemon.abilities}</p>
-      <p>Estatísticas: {pokemon.stats}</p>
-      <button onClick={handleFavorite}> {favoritar ? 'Remover dos favoritos' : 'Adicionar aos favoritos'} </button>
+      {informacoes.nome && (
+        <section className="informacoes">
+            <center>
+          <h1> <strong> {informacoes.nome}</strong> </h1>
+          <img src={informacoes.imagem} alt={informacoes.nome} />
+          <p>Tipo: <strong> {informacoes.tipo} </strong> </p>
+          <p>Habilidades: <strong> {informacoes.habilidades.join(", ")} </strong> </p>
+          <p>Estatísticas: <strong> {informacoes.estatistica.join(", ")} </strong> </p>
+          <button onClick={guardarFavorito}> <strong> {favoritar ? " ⭐ Favoritado ⭐" : "Favoritar"} </strong> </button>
+          <br />
+          <br />
+          </center>
+        </section>
+      )}
     </>
   );
 }
