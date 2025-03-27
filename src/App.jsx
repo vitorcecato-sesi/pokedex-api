@@ -1,6 +1,15 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import './App.css'
-import Home from "./pages/Home"
+// Hooks
+  import { BrowserRouter, Routes, Route } from 'react-router-dom'
+//.
+
+// Style
+  import './App.css'
+//.
+
+// Pages
+  import Home from "./pages/Home"
+  import Favoritos from './pages/favoritos'
+//.
 
 function App() {
 
@@ -8,9 +17,10 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home/>}/>
+          <Route path="/" element={<Home />}/>
+          <Route path='/favoritos' element={<Favoritos />}/>
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> 
     </>
   )
 }

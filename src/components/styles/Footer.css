@@ -1,0 +1,56 @@
+.footerBox{
+    display: flex;
+    justify-content: space-around;
+    background-color: #000000;
+    color: white;
+    padding: 1em;
+}
+
+.contatos{ 
+    width: 18vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.integrantes{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: row;
+    font-size: 1.1rem;
+    gap: 2em;
+}
+
+.bloco-img1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 0.7em; 
+}
+
+.bloco-img2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding-right: 6.2em;
+    gap: 0.7em;
+}
+
+.img-redes{
+    width: auto;
+    height: 3.4vh; 
+}
+
+.imglogo{
+    width: 9vw;
+    height: 20vh;
+    transition: all 1s ease;
+}
+
+.imglogo:hover{
+    transform: scale(1.2);
+}
+
+
