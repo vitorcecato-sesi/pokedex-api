@@ -1,14 +1,20 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import './styles/botaoTema.css'
-function TrocaDecor() {
+function TrocaDeCor() {
+  const [tema, setTema] = useState(false) // Começa no claro
+  
+  useEffect(() => {
+      document.body.style.backgroundColor = tema ? "red" : "white"
+      document.body.style.color = tema ? "white" : "black"
+      console.log(`Tema atualizado: ${tema ? "poke" : "bola"}`)
+  }, [tema])
 
-  const [Tema, setCor] = useState(false);
     return (
         <section className="button">
-      <div className={Tema ? 'poke' : 'bola'}  >
+      <div >
         <h1>Botao para alterar</h1>
         <p>Teste para o botao</p>
- <button className="botao" onClick={() => setCor(!Tema)} > {Tema ? "Poke" : "Bola"}</button>
+ <button className="botao" onClick={() => setTema(!tema)} > {tema ? "Poke" : "Bola"}</button>
   
         
       </div>
@@ -16,4 +22,4 @@ function TrocaDecor() {
     );
   }
   
-  export default TrocaDecor;
+  export default TrocaDeCor;
