@@ -14,9 +14,10 @@
 function Favoritos() {
     return(
         <>
+            <Header />
             <section className="mainFavoritos">
                 <h1>Favoritos</h1>
-                
+
             </section>
         </>
     )
