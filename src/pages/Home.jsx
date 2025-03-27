@@ -8,19 +8,26 @@ function Home() {
   const [pokemons, setPokemons] = useState(JSON.parse(localStorage.getItem("Dados API")) || {})
   const [busca, setBusca] = useState("")
   const [informacoes, setInformacoes] = useState(JSON.parse(localStorage.getItem("Informacoes")) || "")
+  const [erro, setErro] = useState(false)
 
   useEffect(() => {
     async function buscarPokemons() {
       try {
         const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${busca.toLowerCase()}`)
         const dados = await resposta.json()
-        setPokemons(dados)
-        guardarInformacoes(dados)
+        if (dados) {
+          setPokemons(dados)
+          setErro(false)
+          guardarInformacoes(dados)
+        } else {
+          setErro(true)
+        }
       } catch (error) {
         console.error(error)
+        setErro(true)
       }
     }
-    if(busca) buscarPokemons()
+    if (busca) buscarPokemons()
   }, [busca])
 
   const guardarInformacoes = () => {
@@ -39,19 +46,22 @@ function Home() {
     localStorage.setItem("Dados API", JSON.stringify(pokemons))
   }, [pokemons])
 
-
-  return(
+  return (
     <>
       <section className="box-Barra">
-        <input className="pesquisar" value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Insira ID ou nome de um pokémon"/>
+        <input className="pesquisar" value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Insira ID ou nome de um pokémon" />
         <button onClick={guardarInformacoes}>Buscar</button>
       </section>
 
-    <br />
-    <br />
+      <br />
+      <br />
 
-    <center>
-      <Carta />
+      <center>
+        {erro ? (
+          <p>Pokémon não encontrado</p>
+        ) : (
+          <Carta />
+        )}
       </center>
     </>
   )
