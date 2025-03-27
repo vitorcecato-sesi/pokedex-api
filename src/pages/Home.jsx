@@ -1,4 +1,8 @@
 import { useEffect, useState } from "react"
+import Header from "../components/Header"
+import Footer from "../components/Footer"
+import NavBar from "../components/NavBar"
+
 import "./styles/Home.css"
 
 function Home() {
@@ -39,10 +43,13 @@ function Home() {
 
   return(
     <>
+    <Header/>
+    <NavBar/>
       <section className="box-Barra">
         <input className="pesquisar" value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Insira ID ou nome de um pokémon"/>
         <button onClick={guardarInformacoes}>Buscar</button>
       </section>
+      <Footer/>
     </>
   )
 }
