@@ -24,8 +24,8 @@ function Favoritos() {
     return(
         <>
             <section className="bodyFavoritos">
-                <section>
-                    <Header />\
+                <section className="headerNavFav">
+                    <Header />
                     <Navbar favoritos="ativo" />
                 </section>
                 <section className="mainFavoritos">
@@ -39,7 +39,7 @@ function Favoritos() {
                             </section>
                         ))}
                     </section>
-                    
+                    <TrocaDecor />
                 </section>
                 <Footer />
             </section>
