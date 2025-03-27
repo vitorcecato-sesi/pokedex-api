@@ -9,12 +9,12 @@ function Navbar(props) {
   return (
     <nav className="blocoNavBar"> 
 <div className="blox-pokebox">
-           <Link className="link" id="link" to="/"> <span id={props.home} className="Texto">Pokedéx</span> </Link>
+           <Link className="link" id="link" to="/"> <strong id={props.home} className="Texto">Pokedéx</strong> </Link>
            <img  className="imagem1" src={Pokebola}  /> 
            </div>
     
           <div className="blox-favoritos">
-           <Link className="link" id="link" to="/favoritos"><span id={props.favoritos} className="Texto">Favoritos</span></Link>
+           <Link className="link" id="link" to="/favoritos"><strong id={props.favoritos} className="Texto">Favoritos</strong></Link>
            <img  className="imagem2" src={Estrela}  />
            </div>
     </nav>

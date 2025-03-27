@@ -1,12 +1,15 @@
-import Navbar from "../components/NavBar"
-import "../components/styles/NavBar.css"
-
+import Header from '../components/Header'
+import Navbar from '../components/NavBar'
+import Footer from "../components/Footer"
 
 
 function Home() {
     return(
         <>
-            <Navbar home="ativo" />
+        <Header/>
+        <Navbar home="ativo" />
+        <Footer/>
+
         </>
     )
 }
