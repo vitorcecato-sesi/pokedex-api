@@ -22,14 +22,13 @@ function Home() {
         const dados = await resposta.json()
         if (dados) {
           setPokemons(dados)
-          setErro(false)
-          guardarInformacoes(dados)
-        } else {
           setErro(true)
+        } else {
+          setErro(false)
         }
       } catch (error) {
         console.error(error)
-        setErro(true)
+        setErro(false)
       }
     }
     if (busca) buscarPokemons()
@@ -66,21 +65,17 @@ function Home() {
       <br></br>
       <br></br>
       <center>
+      <center>
+        {erro ? (
+          <Carta />
+        ) : (
+          <p>Pokémon não encontrado</p>
+        )}
+      </center>
       <TrocaDeCor/>
       <br></br>
       </center>
       <Footer/>
-
-      <br />
-      <br />
-
-      <center>
-        {erro ? (
-          <p>Pokémon não encontrado</p>
-        ) : (
-          <Carta />
-        )}
-      </center>
     </>
   )
 }
