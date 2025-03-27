@@ -46,11 +46,19 @@ function Home() {
     <>
     <Header/>
     <NavBar/>
-    <TrocaDeCor/>
       <section className="box-Barra">
         <input className="pesquisar" value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Insira ID ou nome de um pokémon"/>
-        <button onClick={guardarInformacoes}>Buscar</button>
+        <button className="botaoHome" onClick={guardarInformacoes}>Buscar</button>
+
       </section>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <center>
+      <TrocaDeCor/>
+      <br></br>
+      </center>
       <Footer/>
     </>
   )
