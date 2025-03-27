@@ -1,8 +1,10 @@
-import "./styles/Home.css"
+import Navbar from "../components/NavBar"
+
 
 function Home() {
     return(
         <>
+            <Navbar />
         </>
     )
 }

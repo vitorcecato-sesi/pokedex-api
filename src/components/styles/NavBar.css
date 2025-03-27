@@ -1,0 +1,56 @@
+.blocoNavBar{
+    background-color: rgba(181, 37, 37, 0.948);
+    padding: 0.8em;
+    justify-content: center;
+    display: flex;
+   gap: 10em;
+}
+
+.link{
+color:white;
+    text-decoration: none;
+}
+
+.imagem1{
+    width: 2.8vw;
+    height: 3.5vh;
+}
+
+.imagem2{
+    width: 1.9vw;
+    height: 3vh;
+}
+
+.blox-pokebox{
+    display: flex;
+}
+
+.blox-favoritos{
+    display: flex;
+    gap: 0.4em;
+}
+
+
+.blox-pokebox:hover {
+    background: rgb(161, 3, 3);
+    border-radius: 4%;
+    padding: 0.4em;
+    transition:  transform 2.8s;
+    box-shadow: 2px 2px 0px 0px black;
+  }
+
+  .blox-favoritos:hover {
+    background: rgb(161, 3, 3);
+    border-radius: 4%;
+    padding: 0.4em;
+    transition:  transform 2.8s;
+    box-shadow: 2px 2px 0px 0px black;
+
+  }
+
+  .Texto:hover{
+    text-decoration: underline;
+  }
+
+
+ 
