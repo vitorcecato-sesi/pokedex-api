@@ -2,30 +2,30 @@
 
     justify-content: center;
     font-size: 1em;
-    width: 50vw;
-    padding: 1.5vw;
-    background-color: #E6E6E6;
+    width: 20vw; 
+    padding: 1vw;
+    background-color:gainsboro;
     border: none;
     outline: none;
     border-radius: 0.7vw;
-    animation: fadeIn 3s;
-    font-family: Parkinsans;
+    margin-left: 1vw;
+    margin-top: 2vw;
+
+    
 }
 
-.contIco {
+.box-Barra {
     display: flex;
-    flex-direction: row-reverse;
-    padding-right: 1.3vw;
-    background-color: #E6E6E6;
-    border-radius: 0.7vw;
+    flex-direction: row;
     align-items: center;
-    animation: fadeIn 3s;
 }
 
-/* Estiliza o ícone: */
-.contIco i {
-    color: #f56004;
-    font-size: 1.5em;
-    animation: fadeIn 3s;
-    cursor: pointer;
+.botaoBusca {
+cursor: pointer;
+border-style: none;
+padding: 1em;
+width: 5vw;
+margin-left: 0.5em;
+border-radius: 0.3vw;
 }
+
