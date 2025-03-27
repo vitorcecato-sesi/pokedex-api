@@ -7,7 +7,8 @@
 //.
 
 // Componente
-
+    import Header from "../components/Header"
+    // import Footer from "../components/Footer"
 //.
 
 function Favoritos() {
@@ -15,6 +16,7 @@ function Favoritos() {
         <>
             <section className="mainFavoritos">
                 <h1>Favoritos</h1>
+                
             </section>
         </>
     )
