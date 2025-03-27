@@ -7,7 +7,11 @@ function Home() {
 
   const [pokemons, setPokemons] = useState(JSON.parse(localStorage.getItem("Dados API")) || {})
   const [busca, setBusca] = useState("")
-  const [informacoes, setInformacoes] = useState(JSON.parse(localStorage.getItem("Informacoes")) || "")
+  const [informacoes, setInformacoes] = useState(JSON.parse(localStorage.getItem("Informações")) || "")
+  const [erro, setErro] = useState(null);
+  const [loading, setLoading] = useState(true); 
+  const [mensagem, setMensagem] = useState ("")
+
 
   useEffect(() => {
     async function buscarPokemons() {
@@ -18,36 +22,51 @@ function Home() {
         guardarInformacoes(dados)
       } catch (error) {
         console.error(error)
+        setErro(erro.message);
+      } finally {
+        setLoading(false);
       }
     }
     if(busca) buscarPokemons()
-  }, [busca])
+  }, [])
 
-  const guardarInformacoes = (pokemon) => {
-    const informacoes = {
-      nome: pokemon.name,
-      imagem: pokemon.sprites.front_default,
-      tipo: pokemon.types[0].type.name,
-      habilidades: pokemon.abilities.map(abilidade => abilidade.ability.name),
-      estatistica: pokemon.stats.map(estatistica => estatistica.base_stat)
+  const guardarInformacoes = () => {
+    const dados = {
+      nome: pokemons.name,
+      imagem: pokemons.sprites.front_default,
+      tipo: pokemons.types[0].type.name,
+      habilidades: pokemons.abilities.map((abilidade) => abilidade.ability.name),
+      estatistica: pokemons.stats.map((estatistica) => estatistica.base_stat)
     }
     setInformacoes(informacoes)
-    localStorage.setItem("Informacoes", JSON.stringify(informacoes))
+    localStorage.setItem("Informações", JSON.stringify(informacoes))
   }
 
   useEffect(() => {
     localStorage.setItem("Dados API", JSON.stringify(pokemons))
   }, [pokemons])
 
-  const mudancaInput = (e) => {
-    setBusca(e.target.value)
-  }
+    if (erro) return setMensagem ("Pokémon não encontrado!")
+        
+    
+
+function mensagemLoading () {
+    if (loading) {
+        return (
+        <p>Carregando pokemons...</p>
+        )
+    }
+}
 
   return(
     <>
-      <section className="contIco">
-        <i className="fa-solid fa-magnifying-glass"></i>
-        <input className="pesquisar" value={busca} onChange={mudancaInput} placeholder="Insira ID ou nome de um pokémon"/>
+
+    <h2>Pokédex: </h2>
+    <p>Busque seus pokemons preferidos!</p>
+      <section className="boxBarra">
+        <input className="pesquisar" value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Insira ID ou nome de um pokémon"/>
+        <button className="botaoBusca" onClick={guardarInformacoes}> Buscar </button>
+        <p>{mensagem}</p>
       </section>
 
     <br />
