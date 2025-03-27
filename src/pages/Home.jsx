@@ -2,6 +2,7 @@ import Navbar from "../components/NavBar"
 import "../components/styles/NavBar.css"
 
 
+
 function Home() {
     return(
         <>
