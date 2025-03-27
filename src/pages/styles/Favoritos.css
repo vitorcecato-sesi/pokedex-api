@@ -3,3 +3,9 @@
     flex-direction: column;
     align-items: center;
 }
+
+.mainFavoritos h1 {
+    font-size: 2.4em;
+    transition: all 1s ease;
+    font-family: "Lilita One", sans-serif;
+}
