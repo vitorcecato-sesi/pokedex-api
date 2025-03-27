@@ -1,9 +1,15 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+// Hooks
+  import { BrowserRouter, Routes, Route } from 'react-router-dom'
+//.
 
-import Home from './pages/Home'
-import Favoritos from './pages/Favoritos'
+// Style
+  import './App.css'
+//.
 
-
+// Pages
+  import Home from "./pages/Home"
+  import Favoritos from './pages/favoritos'
+//.
 
 function App() {
 

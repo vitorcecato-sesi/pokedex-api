@@ -1,7 +1,6 @@
-import Header from '../components/Header'
-import Navbar from '../components/NavBar'
-import Footer from "../components/Footer"
-
+// Style
+    import "./styles/Home.css"
+//.
 
 function Home() {
     return(
