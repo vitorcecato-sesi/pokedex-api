@@ -52,5 +52,10 @@ color:white;
     text-decoration: underline;
   }
 
+  #ativo {
+   
+    border-bottom: 0.1em solid #460606;
+    padding: 4px;
+}
 
  
