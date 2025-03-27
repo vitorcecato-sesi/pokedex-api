@@ -1,8 +1,14 @@
-import "./styles/Home.css"
+// Style
+    import "./styles/Home.css"
+//.
 
 function Home() {
     return(
         <>
+        <Header/>
+        <Navbar home="ativo" />
+        <Footer/>
+
         </>
     )
 }
