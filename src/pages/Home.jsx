@@ -7,11 +7,7 @@ function Home() {
 
   const [pokemons, setPokemons] = useState(JSON.parse(localStorage.getItem("Dados API")) || {})
   const [busca, setBusca] = useState("")
-  const [informacoes, setInformacoes] = useState(JSON.parse(localStorage.getItem("Informações")) || "")
-  const [erro, setErro] = useState(null);
-  const [loading, setLoading] = useState(true); 
-  const [mensagem, setMensagem] = useState ("")
-
+  const [informacoes, setInformacoes] = useState(JSON.parse(localStorage.getItem("Informacoes")) || "")
 
   useEffect(() => {
     async function buscarPokemons() {
@@ -39,7 +35,7 @@ function Home() {
       estatistica: pokemons.stats.map((estatistica) => estatistica.base_stat)
     }
     setInformacoes(informacoes)
-    localStorage.setItem("Informações", JSON.stringify(informacoes))
+    localStorage.setItem("Informacoes", JSON.stringify(informacoes))
   }
 
   useEffect(() => {
