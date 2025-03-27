@@ -23,6 +23,7 @@ function Favoritos() {
                 </section>
                 <section className="mainFavoritos">
                     <h1>Favoritos</h1>
+                    <TrocaDecor/>
 
                     
                 </section>

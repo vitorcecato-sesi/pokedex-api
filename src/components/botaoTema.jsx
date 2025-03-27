@@ -12,8 +12,6 @@ function TrocaDeCor() {
     return (
         <section className="button">
       <div >
-        <h1>Botao para alterar</h1>
-        <p>Teste para o botao</p>
  <button className="botao" onClick={() => setTema(!tema)} > {tema ? "Poke" : "Bola"}</button>
   
         
