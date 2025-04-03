@@ -40,7 +40,7 @@ function Favoritos() {
                 </section>
                 <section className="mainFavoritos">
                     <h1>Favoritos</h1>
-                    {infoFavorito.length <= 0 && <p>Você não possui favoritos.</p>}
+                    {infoFavorito && infoFavorito.length <= 0 && <p>Você não possui favoritos.</p>}
                     <section className="infoFavoritos">
                         {infoFavorito && infoFavorito.length > 0 && infoFavorito.map((pokemon, index) => (
                             <section className="cartaFavoritos">
