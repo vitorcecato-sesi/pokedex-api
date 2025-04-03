@@ -3,11 +3,11 @@ import "./styles/Carta.css"
 import { useState, useEffect } from 'react';
 
 function Carta() {
-  const [informacoes, setInformacoes] = useState(JSON.parse(localStorage.getItem("Informacoes")) || "")
-  const [favoritos, setFavoritos] = useState(JSON.parse(localStorage.getItem("Favoritos")) || [])
-  const [favoritar, setFavoritar] = useState(false);
+  const [informacoes, setInformacoes] = useState(JSON.parse(localStorage.getItem("Informacoes")) || "") //  Obtém dados do pokemon pesquisado
+  const [favoritos, setFavoritos] = useState(JSON.parse(localStorage.getItem("Favoritos")) || []) // Obtém dados dos pokemons favoritos
+  const [favoritar, setFavoritar] = useState(false);  // Define a palavra que aparecerá no botão (Favoritar/Favoritado)
   
-  useEffect(() => {
+  useEffect(() => {   // Fica atualizando para atualizar as variáveis
     const timer = setTimeout(() => {
         setInformacoes(JSON.parse(localStorage.getItem("Informacoes") || ""));
         setFavoritos(JSON.parse(localStorage.getItem("Favoritos")) || [])
@@ -15,12 +15,11 @@ function Carta() {
     return () => clearTimeout(timer);
   })
 
-  useEffect(() => {
+  useEffect(() => {   //  Verifica se o pokemon pesquisado está dentro da array de Favoritos
     const timer = setInterval(() => {
       const favoritoExistente = favoritos.find(favorito => favorito.nome === informacoes.nome);
       if (favoritoExistente) {
         setFavoritar(true);
-        console.log(favoritoExistente);
       } else {
         setFavoritar(false);
       }
@@ -29,9 +28,9 @@ function Carta() {
   })
 
   const guardarFavorito = () => {
-        const novoFavorito = [...favoritos, informacoes];
-        localStorage.setItem("Favoritos", JSON.stringify(novoFavorito));
-        setFavoritar(false);
+    const novoFavorito = [...favoritos, informacoes]; // Cria uma nova array com as informações anteriores e o novo pokemon
+    localStorage.setItem("Favoritos", JSON.stringify(novoFavorito));  // Armazena a nova array no local storage
+    setFavoritar(true);
   };
   
   return (

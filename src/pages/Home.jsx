@@ -8,21 +8,21 @@ import Carta from "../components/Carta";
 import "./styles/Home.css";
 
 function Home() {
-  const [pokemons, setPokemons] = useState(JSON.parse(localStorage.getItem("Dados API")) || {});
-  const [busca, setBusca] = useState("");
-  const [buscaInput, setBuscaInput] = useState("");
-  const [informacoes, setInformacoes] = useState(JSON.parse(localStorage.getItem("Informacoes")) || {});
-  const [erro, setErro] = useState(false);
+  const [pokemons, setPokemons] = useState(JSON.parse(localStorage.getItem("Dados API")) || {});  // Todos os valores da api
+  const [busca, setBusca] = useState(""); // Pega o valor pesquisado
+  const [buscaInput, setBuscaInput] = useState(""); // Pega o valor do input
+  const [informacoes, setInformacoes] = useState(JSON.parse(localStorage.getItem("Informacoes")) || {});  // Pega as informações do pokemon pesquisado
+  const [erro, setErro] = useState(false);  // Tratamento de erro
 
   useEffect(() => {
       async function buscarPokemons() {
         try {
-          const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${busca.toLowerCase()}`);
+          const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${busca.toLowerCase()}`); // LowerCase para tratar letras maiusculas
           const dados = await resposta.json();
           if (dados) {
             setPokemons(dados);
             setErro(false);
-            guardarInformacoes(dados);
+            guardarInformacoes(dados);  // Função para tratar os dados
           } else {
             setErro(true);
           }
@@ -36,7 +36,7 @@ function Home() {
   }, [busca]);
 
   const guardarInformacoes = (dados) => {
-    const informacoes = {
+    const informacoes = {   // Objeto com as informações do pokemon
       nome: dados.name,
       imagem: dados.sprites.front_default,
       tipo: dados.types[0].type.name,
@@ -44,11 +44,11 @@ function Home() {
       estatistica: dados.stats.map(estatistica => estatistica.base_stat),
     };
     setInformacoes(informacoes);
-    localStorage.setItem("Informacoes", JSON.stringify(informacoes));
+    localStorage.setItem("Informacoes", JSON.stringify(informacoes)); // Atualiza os dados do local storage
   };
 
   useEffect(() => {
-    localStorage.setItem("Dados API", JSON.stringify(pokemons));
+    localStorage.setItem("Dados API", JSON.stringify(pokemons));  // Atualiza os dados do local storage
   }, [pokemons]);
 
   const clicarBotao = () => {
@@ -70,13 +70,13 @@ function Home() {
         <input
           className="pesquisar"
           value={buscaInput}
-          onChange={(e) => setBuscaInput(e.target.value)}
+          onChange={(e) => setBuscaInput(e.target.value)} // Quando o input for alterado, salva as informações do input
           placeholder="Insira ID ou nome de um pokémon"
         />
         <button className="botaoHome" onClick={clicarBotao}>🔍</button>
       </section>
         {erro ? (
-          <p className="erro">Por favor, insira um Pokémon válido!</p>
+          <p className="erro">Por favor, insira um Pokémon válido!</p>  // Tratamento de erro
         ) : (
           <Carta/>
         )}
