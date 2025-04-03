@@ -8,7 +8,7 @@
 
 // Pages
   import Home from "./pages/Home"
-  import Favoritos from './pages/favoritos'
+  import Favoritos from './pages/Favoritos'
 //.
 
 
