@@ -40,12 +40,13 @@ function Favoritos() {
                 </section>
                 <section className="mainFavoritos">
                     <h1>Favoritos</h1>
+                    {infoFavorito.length <= 0 && <p>Você não possui favoritos.</p>}
                     <section className="infoFavoritos">
                         {infoFavorito && infoFavorito.length > 0 && infoFavorito.map((pokemon, index) => (
                             <section className="cartaFavoritos">
                                 <img src={pokemon.imagem} alt={`Imagem do ${pokemon.nome} `} />
                                 <h2>{pokemon.nome}</h2>
-                                <button onClick={() => removerFavorito(index)}>Desfavoritar</button>
+                                <button id={document.body.style.backgroundColor == "red" ? "branco" : "vermelho"} onClick={() => removerFavorito(index)}>Desfavoritar</button>
                             </section>
                         ))}
                     </section>
