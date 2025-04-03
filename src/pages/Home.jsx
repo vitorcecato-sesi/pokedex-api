@@ -75,16 +75,12 @@ function Home() {
         />
         <button className="botaoHome" onClick={clicarBotao}>🔍</button>
       </section>
-      <br/>
-      <br/>
         {erro ? (
           <p className="erro">Por favor, insira um Pokémon válido!</p>
         ) : (
           <Carta/>
         )}
-        <br/>
         <TrocaDeCor/>
-        <br/>
       </section>
       <Footer/>
     </>

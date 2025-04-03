@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    height: 42em;
 }
 
 .pesquisar {
@@ -19,7 +20,6 @@
 }
 
 .box-Barra {
-    margin-top: 3em;
     display: flex;
     flex-direction: row;
     align-items: center;
