@@ -14,16 +14,10 @@ function Carta() {
   })
 
   const guardarFavorito = () => {
-    const favoritos = JSON.parse(localStorage.getItem("Favoritos")) || [];
-    // Verifica se o novoFavorito já existe nos favoritos
-    const favoritoExistente = favoritos.find(favorito => favorito.id === informacoes.id); // Supondo que 'id' é uma propriedade única
-    if (!favoritoExistente) {
-      // Se não encontrar, adiciona o novo favorito
-      favoritos.push(informacoes);
-      localStorage.setItem("Favoritos", JSON.stringify(favoritos));
-    }
-
-    setFavoritar(false);
+        const favoritos = JSON.parse(localStorage.getItem("Favoritos")) || [];
+        const novoFavorito = [...favoritos, informacoes];
+        localStorage.setItem("Favoritos", JSON.stringify(novoFavorito));
+        setFavoritar(false);
   };
   
   return (
