@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: space-between;
     height: auto;
+    min-height: 120vh;
 }
 
 .mainFavoritos {
