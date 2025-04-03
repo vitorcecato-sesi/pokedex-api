@@ -7,23 +7,32 @@ import Carta from "../components/Carta"
 
 import "./styles/Home.css"
 
+import Carta from "../components/Carta"
+
 function Home() {
 
   const [pokemons, setPokemons] = useState(JSON.parse(localStorage.getItem("Dados API")) || {})
   const [busca, setBusca] = useState("")
   const [informacoes, setInformacoes] = useState(JSON.parse(localStorage.getItem("Informacoes")) || "")
+  const [erro, setErro] = useState(false)
 
   useEffect(() => {
     async function buscarPokemons() {
       try {
         const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${busca.toLowerCase()}`)
         const dados = await resposta.json()
-        setPokemons(dados)
+        if (dados) {
+          setPokemons(dados)
+          setErro(true)
+        } else {
+          setErro(false)
+        }
       } catch (error) {
         console.error(error)
+        setErro(false)
       }
     }
-    if(busca) buscarPokemons()
+    if (busca) buscarPokemons()
   }, [busca])
 
   const guardarInformacoes = () => {
@@ -36,19 +45,19 @@ function Home() {
     }
     setInformacoes(dados)
     localStorage.setItem("Informacoes", JSON.stringify(informacoes))
+    localStorage.setItem("Informacoes", JSON.stringify(informacoes))
   }
 
   useEffect(() => {
     localStorage.setItem("Dados API", JSON.stringify(pokemons))
   }, [pokemons])
 
-
-  return(
+  return (
     <>
     <Header/>
     <NavBar/>
       <section className="box-Barra">
-        <input className="pesquisar" value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Insira ID ou nome de um pokémon"/>
+        <input className="pesquisar" value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Insira ID ou nome de um pokémon" />
         <button className="botaoHome" onClick={guardarInformacoes}>Buscar</button>
         <Carta/>
 
@@ -58,6 +67,13 @@ function Home() {
       <br></br>
       <br></br>
       <center>
+      <center>
+        {erro ? (
+          <Carta />
+        ) : (
+          <p>Pokémon não encontrado</p>
+        )}
+      </center>
       <TrocaDeCor/>
       <br></br>
       </center>
