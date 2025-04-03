@@ -1,67 +1,94 @@
-import { useEffect, useState } from "react"
-import Header from "../components/Header"
-import Footer from "../components/Footer"
-import NavBar from "../components/NavBar"
-import TrocaDeCor from "../components/botaoTema"
+import { useEffect, useState } from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import NavBar from "../components/NavBar";
+import TrocaDeCor from "../components/botaoTema";
+import Carta from "../components/Carta";
 
-import "./styles/Home.css"
+import "./styles/Home.css";
 
 function Home() {
-
-  const [pokemons, setPokemons] = useState(JSON.parse(localStorage.getItem("Dados API")) || {})
-  const [busca, setBusca] = useState("")
-  const [informacoes, setInformacoes] = useState(JSON.parse(localStorage.getItem("Informacoes")) || "")
+  const [pokemons, setPokemons] = useState(JSON.parse(localStorage.getItem("Dados API")) || {});
+  const [busca, setBusca] = useState("");
+  const [buscaInput, setBuscaInput] = useState("");
+  const [informacoes, setInformacoes] = useState(JSON.parse(localStorage.getItem("Informacoes")) || {});
+  const [erro, setErro] = useState(false);
 
   useEffect(() => {
-    async function buscarPokemons() {
-      try {
-        const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${busca.toLowerCase()}`)
-        const dados = await resposta.json()
-        setPokemons(dados)
-      } catch (error) {
-        console.error(error)
+      async function buscarPokemons() {
+        try {
+          const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${busca.toLowerCase()}`);
+          const dados = await resposta.json();
+          if (dados) {
+            setPokemons(dados);
+            setErro(false);
+            guardarInformacoes(dados);
+          } else {
+            setErro(true);
+          }
+        } catch (error) {
+          console.error(error);
+          setErro(true);
+        }
       }
-    }
-    if(busca) buscarPokemons()
-  }, [busca])
+      buscarPokemons();
+    
+  }, [busca]);
 
-  const guardarInformacoes = () => {
-    const dados = {
-      nome: pokemons.name,
-      imagem: pokemons.sprites.front_default,
-      tipo: pokemons.types[0].type.name,
-      habilidades: pokemons.abilities.map(abilidade => abilidade.ability.name),
-      estatistica: pokemons.stats.map(estatistica => estatistica.base_stat)
+  const guardarInformacoes = (dados) => {
+    const informacoes = {
+      nome: dados.name,
+      imagem: dados.sprites.front_default,
+      tipo: dados.types[0].type.name,
+      habilidades: dados.abilities.map(abilidade => abilidade.ability.name),
+      estatistica: dados.stats.map(estatistica => estatistica.base_stat),
+    };
+    setInformacoes(informacoes);
+    localStorage.setItem("Informacoes", JSON.stringify(informacoes));
+  };
+
+  useEffect(() => {
+    localStorage.setItem("Dados API", JSON.stringify(pokemons));
+  }, [pokemons]);
+
+  const clicarBotao = () => {
+    if (buscaInput == "") { 
+      setErro(true)
+      return
     }
-    setInformacoes(dados)
-    localStorage.setItem("Informacoes", JSON.stringify(informacoes))
+    setBusca(buscaInput)
+    setBuscaInput("")
+    setErro(false)
   }
 
-  useEffect(() => {
-    localStorage.setItem("Dados API", JSON.stringify(pokemons))
-  }, [pokemons])
-
-
-  return(
+  return (
     <>
-    <Header/>
-    <NavBar/>
+      <Header/>
+      <NavBar/>
+      <section className="box-home">
       <section className="box-Barra">
-        <input className="pesquisar" value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Insira ID ou nome de um pokémon"/>
-        <button className="botaoHome" onClick={guardarInformacoes}>Buscar</button>
-
+        <input
+          className="pesquisar"
+          value={buscaInput}
+          onChange={(e) => setBuscaInput(e.target.value)}
+          placeholder="Insira ID ou nome de um pokémon"
+        />
+        <button className="botaoHome" onClick={clicarBotao}>🔍</button>
       </section>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <center>
-      <TrocaDeCor/>
-      <br></br>
-      </center>
+      <br/>
+      <br/>
+        {erro ? (
+          <p className="erro">Por favor, insira um Pokémon válido!</p>
+        ) : (
+          <Carta/>
+        )}
+        <br/>
+        <TrocaDeCor/>
+        <br/>
+      </section>
       <Footer/>
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;

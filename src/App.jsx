@@ -11,6 +11,7 @@
   import Favoritos from './pages/favoritos'
 //.
 
+
 function App() {
 
   return (
