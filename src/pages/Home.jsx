@@ -3,6 +3,7 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import NavBar from "../components/NavBar"
 import TrocaDeCor from "../components/botaoTema"
+import Carta from "../components/Carta"
 
 import "./styles/Home.css"
 
@@ -49,6 +50,7 @@ function Home() {
       <section className="box-Barra">
         <input className="pesquisar" value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Insira ID ou nome de um pokémon"/>
         <button className="botaoHome" onClick={guardarInformacoes}>Buscar</button>
+        <Carta/>
 
       </section>
       <br></br>
