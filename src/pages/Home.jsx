@@ -64,7 +64,7 @@ function Home() {
   return (
     <>
       <Header/>
-      <NavBar/>
+      <NavBar home="ativo"/>
       <section className="box-home">
       <section className="box-Barra">
         <input
