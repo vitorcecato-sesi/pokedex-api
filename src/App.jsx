@@ -7,8 +7,8 @@
 //.
 
 // Pages
-  import Home from "./pages/Home"
-  import Favoritos from './pages/Favoritos'
+  import Home from "./pages/Home.jsx"
+  import Favoritos from './pages/Favoritos.jsx'
 //.
 
 
