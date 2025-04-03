@@ -46,7 +46,7 @@ function Favoritos() {
                             <section className="cartaFavoritos">
                                 <img src={pokemon.imagem} alt={`Imagem do ${pokemon.nome} `} />
                                 <h2>{pokemon.nome}</h2>
-                                <button id={document.body.style.backgroundColor == "red" ? "branco" : "vermelho"} onClick={() => removerFavorito(index)}>Desfavoritar</button>
+                                <button id={document.body.style.backgroundColor == "red" ? "branco" : "vermelho"} className="buttonCarta" onClick={() => removerFavorito(index)}>Desfavoritar</button>
                             </section>
                         ))}
                     </section>

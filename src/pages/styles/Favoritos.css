@@ -20,7 +20,11 @@
     gap: 1em; /* Espaçamento entre os itens */
 }
 
-
+.buttonCarta:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
+    cursor: pointer; 
+}
 
 .mainFavoritos h1 {
     font-size: 2.4em;
