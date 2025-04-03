@@ -1,3 +1,10 @@
+.bodyFavoritos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 120vh;
+}
+
 .mainFavoritos {
     display: flex;
     flex-direction: column;
@@ -9,4 +16,29 @@
     font-size: 2.4em;
     transition: all 1s ease;
     font-family: "Lilita One", sans-serif; /* Fonte escolhida */
+}
+
+.cartaFavoritos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0.1em solid black;
+    padding: 3em 8em;
+    border-radius: 2em;
+}
+
+#vermelho {
+    background-color: red;
+    color: white;
+    padding: 1em;
+    border: none;
+    border-radius: 0.8em;
+}
+
+#branco {
+    background-color: white;
+    color: red;
+    padding: 1em;
+    border: none;
+    border-radius: 0.8em;
 }

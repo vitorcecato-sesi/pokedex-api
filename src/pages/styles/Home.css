@@ -1,0 +1,41 @@
+.pesquisar {
+
+    justify-content: center;
+    font-size: 1em;
+    width: 20vw; 
+    padding: 1vw;
+    background-color:gainsboro;
+    border: none;
+    outline: none;
+    border-radius: 0.7vw;
+    margin-left: 1vw;
+    margin-top: 2vw;
+
+    
+}
+
+.box-Barra {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.botaoBusca {
+cursor: pointer;
+border-style: none;
+padding: 1em;
+width: 5vw;
+margin-left: 0.5em;
+border-radius: 0.3vw;
+}
+
+.botaoHome {
+   margin-top: 2em;
+   padding: 1em;
+   background-color: black;
+   color: white;
+   border-style: none;
+   cursor: pointer;
+   border-radius: 0.7vw;
+}
+

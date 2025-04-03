@@ -11,16 +11,18 @@
   import Favoritos from './pages/favoritos'
 //.
 
+
 function App() {
 
   return (
     <>
+  
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path='/favoritos' element={<Favoritos />}/>
         </Routes>
-      </BrowserRouter> 
+      </BrowserRouter>
     </>
   )
 }
