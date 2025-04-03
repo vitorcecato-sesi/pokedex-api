@@ -51,6 +51,7 @@ function Favoritos() {
                         ))}
                     </section>
                     <TrocaDecor />
+                    <br />
                 </section>
                 <Footer />
             </section>
