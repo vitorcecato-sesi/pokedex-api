@@ -31,7 +31,7 @@ function Carta() {
   const guardarFavorito = () => {
         const novoFavorito = [...favoritos, informacoes];
         localStorage.setItem("Favoritos", JSON.stringify(novoFavorito));
-        setFavoritar(false);
+        setFavoritar(true);
   };
   
   return (
