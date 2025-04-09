@@ -28,9 +28,11 @@ function Carta() {
   })
 
   const guardarFavorito = () => {
-    const novoFavorito = [...favoritos, informacoes]; // Cria uma nova array com as informações anteriores e o novo pokemon
-    localStorage.setItem("Favoritos", JSON.stringify(novoFavorito));  // Armazena a nova array no local storage
-    setFavoritar(true);
+    if (!favoritar) {
+      const novoFavorito = [...favoritos, informacoes]; // Cria uma nova array com as informações anteriores e o novo pokemon
+      localStorage.setItem("Favoritos", JSON.stringify(novoFavorito));  // Armazena a nova array no local storage
+      setFavoritar(true);
+    }
   };
   
   return (
