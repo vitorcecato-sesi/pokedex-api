@@ -9,30 +9,32 @@ import "./styles/Home.css"
 import Carta from "../components/Carta"
 
 function Home() {
-
-  const [pokemons, setPokemons] = useState(JSON.parse(localStorage.getItem("Dados API")) || {})
-  const [busca, setBusca] = useState("")
-  const [informacoes, setInformacoes] = useState(JSON.parse(localStorage.getItem("Informacoes")) || "")
-  const [erro, setErro] = useState(false)
+  const [pokemons, setPokemons] = useState(JSON.parse(localStorage.getItem("Dados API")) || {}); 
+  const [busca, setBusca] = useState(""); 
+  const [buscaInput, setBuscaInput] = useState(""); 
+  const [informacoes, setInformacoes] = useState(JSON.parse(localStorage.getItem("Informacoes")) || {});
+  const [erro, setErro] = useState(false);
 
   useEffect(() => {
-    async function buscarPokemons() {
-      try {
-        const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${busca.toLowerCase()}`)
-        const dados = await resposta.json()
-        if (dados) {
-          setPokemons(dados)
-          setErro(true)
-        } else {
-          setErro(false)
+      async function buscarPokemons() {
+        try {
+          const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${busca.toLowerCase()}`);
+          const dados = await resposta.json();
+          if (dados) {
+            setPokemons(dados);
+            setErro(false);
+            guardarInformacoes(dados);
+          } else {
+            setErro(true);
+          }
+        } catch (error) {
+          console.error(error);
+          setErro(true);
         }
-      } catch (error) {
-        console.error(error)
-        setErro(false)
       }
-    }
-    if (busca) buscarPokemons()
-  }, [busca])
+      buscarPokemons();
+    
+  }, [busca]); //Sempre quando clicar no botao o useEfect vai acontecer
 
   const guardarInformacoes = () => {
     const dados = {

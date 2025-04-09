@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom" 
 import "./styles/NavBar.css"
 
 import Pokebola from "../assets/pokebolaSemFundo.png"
